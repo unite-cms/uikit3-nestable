@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Nestable - UIkit tests</title>
+        <link href="../node_modules/uikit/dist/css/uikit.css" type="text/css" rel="stylesheet">
+        <script src="../node_modules/uikit/dist/js/uikit.js"></script>
+        <script src="../node_modules/uikit/dist/js/uikit-icons.js"></script>
+        <script src="../dist/js/nestable.js"></script>
+
+        <style>
+
+            .test-item {
+                font-size: 0.875rem;
+            }
+
+        </style>
+        <script>
+
+            var util = UIkit.util;
+
+            util.ready(function () {
+
+                util.on(document.body, 'start moved added removed stop', function (e, sortable, el) {
+                    console.log(e.type, sortable, el);
+                });
+
+            });
+
+        </script>
+    </head>
+
+    <body>
+
+        <div class="uk-container">
+
+            <h1>Nestable</h1>
+
+            <div uk-sortable="handle: .uk-sortable-handle; nestable: -1">
+                <div class="uk-margin">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                        <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                        <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 2
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                        <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 3
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                        <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 4
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                        <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 5
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
