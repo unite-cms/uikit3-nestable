@@ -1,8 +1,9 @@
 
 import sortable from 'uikit/src/js/components/sortable';
-import {includes, each, append, toNodes, within} from 'uikit-util';
+import {getPos, includes, each, append, toNodes, within} from 'uikit-util';
 
 UIkit.mixin({
+    nestableMargin: 40,
     props: {
         nestable: Boolean
     },
@@ -11,11 +12,9 @@ UIkit.mixin({
     },
     ready() {
         if(this.nestable) {
-            console.log("CONNECtED");
             each(this.$el.children, (child) => {
                 if(typeof child == 'object') {
-                    console.log(child);
-                    child.ukSortableNestableGroup = append(child, '<div uk-sortable="handle: .uk-sortable-handle; nestable: true"></div>');
+                    child.ukSortableNestableGroup = append(child, '<div style="margin-left:' + this.$options.nestableMargin + 'px;" uk-sortable="handle: .uk-sortable-handle; nestable: true"></div>');
                 }
             });
         }
@@ -72,7 +71,9 @@ UIkit.mixin({
                     }
     
                     if(within(previous.$el, sortable.$el)) {
-                        move_to_parent = true;
+                        if(this.drag.getBoundingClientRect().left - sortable.$el.getBoundingClientRect().left < this.$options.nestableMargin) {
+                            move_to_parent = true;
+                        }
                     }
                 }
 
