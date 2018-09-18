@@ -4,17 +4,18 @@ import {includes, each, append, toNodes, within} from 'uikit-util';
 
 UIkit.mixin({
     props: {
-        nestable: Number
+        nestable: Boolean
     },
     data: {
         nestable: false
     },
-    connected() {
+    ready() {
         if(this.nestable) {
-            let childNestable = this.nestable > 0 ? this.nestable - 1 : this.nestable;  
+            console.log("CONNECtED");
             each(this.$el.children, (child) => {
                 if(typeof child == 'object') {
-                    child.ukSortableNestableGroup = append(child, '<div class="uk-placeholder" uk-sortable="handle: .uk-sortable-handle; nestable: ' + childNestable + '"></div>');
+                    console.log(child);
+                    child.ukSortableNestableGroup = append(child, '<div uk-sortable="handle: .uk-sortable-handle; nestable: true"></div>');
                 }
             });
         }
@@ -34,6 +35,9 @@ UIkit.mixin({
             this.$emit();
 
             let target = e.type === 'mousemove' ? e.target : document.elementFromPoint(this.pos.x - document.body.scrollLeft, this.pos.y - document.body.scrollTop);
+
+            //console.log(e.target);
+
 
             const sortable = this.getSortable(target);
             const previous = this.getSortable(this.placeholder);
@@ -77,12 +81,20 @@ UIkit.mixin({
                 }
             }
 
-            target = sortable.$el === target.parentNode && target || toNodes(sortable.$el.children).filter(element => within(target, element))[0];
+            target = sortable.$el === target.parentNode && target || toNodes(sortable.$el.children).filter(element => within(target, element))[0];            
 
             if (move) {
                 previous.remove(this.placeholder);
             } else if (!target) {
                 return;
+            }
+
+            if(move_to_child) {
+                console.log("move_to_child", target);
+            }
+
+            if(move_to_parent) {
+                console.log("move_to_parent", target);
             }
 
             sortable.insert(this.placeholder, target);

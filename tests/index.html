@@ -12,8 +12,14 @@
 
         <style>
 
-            .test-item {
-                font-size: 0.875rem;
+            .uk-sortable .uk-sortable,
+            .uk-sortable-drag .uk-sortable,
+            .uk-sortable-placeholder .uk-sortable {
+                padding-top: 20px;
+                margin-left: 3%;
+                margin-bottom: -20px;
+                min-height: 0;
+                background: rgba(0,0,0,0.05);
             }
 
         </style>
@@ -38,7 +44,7 @@
 
             <h1>Nestable</h1>
 
-            <div uk-sortable="handle: .uk-sortable-handle; nestable: -1">
+            <div class="PARENT" uk-sortable="handle: .uk-sortable-handle; nestable: true">
                 <div class="uk-margin">
                     <div class="uk-card uk-card-default uk-card-body uk-card-small">
                         <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
