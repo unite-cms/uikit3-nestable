@@ -12,12 +12,43 @@
 
         <style>
 
+            /* nested sortable groups indention */            
             .uk-sortable .uk-sortable,
-            .uk-sortable-drag .uk-sortable,
-            .uk-sortable-placeholder .uk-sortable {
+            .uk-sortable-drag .uk-sortable {
+                margin-left: 50px;
+            }
+
+            /* nested sortable groups inner padding to the parent element */
+            .uk-sortable .uk-sortable:not(.uk-sortable-empty),
+            .uk-sortable .uk-sortable-drag:not(.uk-sortable-empty) {
                 padding-top: 20px;
-                margin-bottom: -20px;
+            }
+
+            /* remove uk-sortable-empty min-height sort nested sortables */
+            .uk-sortable .uk-sortable.uk-sortable-empty,
+            .uk-sortable-drag .uk-sortable.uk-sortable-empty {
                 min-height: 0;
+            }
+
+            /* Custom placeholder styles, makes it easier to see the current position */
+            .uk-sortable-placeholder {
+                position: relative;
+                opacity: 1;
+            }
+
+            .uk-sortable-placeholder > * {
+                opacity: 0;
+            }
+
+            .uk-sortable-placeholder:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border: 1px dashed #E5E5E5;
+                opacity: 1;
             }
 
         </style>
@@ -28,7 +59,7 @@
             util.ready(function () {
 
                 util.on(document.body, 'start moved added removed stop', function (e, sortable, el) {
-                    console.log(e.type, sortable, el);
+                    //console.log(e.type, sortable, el);
                 });
 
             });
@@ -42,7 +73,7 @@
 
             <h1>Nestable</h1>
 
-            <div class="PARENT" uk-sortable="handle: .uk-sortable-handle; nestable: true">
+            <div class="PARENT" uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150">
                 <div class="uk-margin">
                     <div class="uk-card uk-card-default uk-card-body uk-card-small">
                         <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
@@ -56,6 +87,18 @@
                 <div class="uk-margin">
                     <div class="uk-card uk-card-default uk-card-body uk-card-small">
                         <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 3
+                    </div>
+                    <div uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150">
+                        <div class="uk-margin">
+                            <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                                <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-card uk-card-default uk-card-body uk-card-small">
+                                <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 2
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="uk-margin">
