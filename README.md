@@ -89,5 +89,5 @@ To make it easier to sort, you should make the placeholder visible. Something li
     }
 ```
 
-A working example can be found in tests/index.html
-Please see tests/index.html
+A working example can be found in dist/index.html
+Please see dist/index.html
