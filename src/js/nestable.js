@@ -5,7 +5,7 @@ import {getPos, includes, each, append, toNodes, within} from 'uikit-util';
 let originalMove = sortable.methods.move;
 let originalConnected = sortable.methods.connected;
 
-UIkit.mixin({
+let nestable = {
     nestableMargin: 50,
     props: {
         nestable: Boolean
@@ -86,4 +86,12 @@ UIkit.mixin({
             originalMove ? originalMove.call(this, e) : null;
         }
     }
-}, 'sortable');
+};
+
+// If global UIkit instance is available, add mixin.
+if(typeof UIkit !== 'undefined') {
+    UIkit.mixin(nestable, 'sortable');
+}
+
+// For ES6 module compatibility export nestable
+export default nestable;

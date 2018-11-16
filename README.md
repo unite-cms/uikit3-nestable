@@ -1,8 +1,9 @@
 # Nestable option for uikit3 sortable
 
-![Screenshot](https://api.monosnap.com/rpc/file/download?id=f4aFvH2Ghh1SVWpzy8fcU0DqLUo8t4)
-
 Uses UIkit.mixin to add a **nestable** option to the uikit3 sortable component.
+
+## Demo 
+See this nestable plugin in action: [DEMO](https://quirky-hodgkin-15c56c.netlify.com/).
 
 ## Installation 
 
@@ -14,11 +15,32 @@ Uses UIkit.mixin to add a **nestable** option to the uikit3 sortable component.
 
 ## Usage
 
-After including **node_moduels/uikit3-nestable/dist/js/nestable.js**, you have a new sortable option: 
+### With ES6 compatible modules (webpack)
 
+```js
+    import UIkit from 'uikit';
+    import nestable from 'uikit3-nestable';
+
+    // Add nestable as mixin to the sortable component.
+    UIkit.mixin(nestable, 'sortable');
+```
+
+### With a global UIkit instance
+
+Include **node_moduels/uikit3-nestable/dist/js/nestable.js** after UIkit:
+```html
+    <link rel="stylesheet" href=".../uikit.min.css" />
+    <script src=".../uikit.min.js"></script>
+    <script src=".../uikit-icons.min.js"></script>
+    <script src="..../nestable.js"></script>>
+```
+
+Now you have a new nestable option for your uk-sortable components:
 ```html
     <div uk-sortable="handle: .uk-sortable-handle; nestable: true"></div>
 ````
+
+### Styles
 
 In order to make nestable work, you must add at least the following css code: 
 
