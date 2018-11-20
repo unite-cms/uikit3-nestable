@@ -8,10 +8,12 @@ let originalConnected = sortable.methods.connected;
 let nestable = {
     nestableMargin: 50,
     props: {
-        nestable: Boolean
+        nestable: Boolean,
+        nestableContainerClass: String
     },
     data: {
-        nestable: false
+        nestable: false,
+        nestableContainerClass: 'uk-sortable'
     },
     connected() {
         if(this.nestable) {
@@ -20,7 +22,7 @@ let nestable = {
             let propsArray = Object.keys(this.$props).map((key) => { return key + ':' + this.$props[key]; });
             each(this.$el.children, (child) => {
                 if(typeof child == 'object') {
-                    child.querySelector('[uk-sortable]') || append(child, '<div uk-sortable="' + propsArray.join(';') + '"></div>');
+                    child.querySelector('.' + this.$props.nestableContainerClass) || append(child, '<div class="' + this.$props.nestableContainerClass + '" uk-sortable="' + propsArray.join(';') + '"></div>');
                 }
             });
         }

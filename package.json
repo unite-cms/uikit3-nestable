@@ -1,7 +1,7 @@
 {
   "name": "uikit3-nestable",
   "title": "UIkit 3 Nestable",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "main": "dist/js/nestable.js",
   "description": "Extends the UIkit 3 sortable component with a nestable option.",

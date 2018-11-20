@@ -57,15 +57,15 @@
         </style>
         <script>
 
-            var util = UIkit.util;
+            /*var util = UIkit.util;
 
             util.ready(function () {
 
                 util.on(document.body, 'start moved added removed stop', function (e, sortable, el) {
-                    //console.log(e.type, sortable, el);
+                    console.log(e.type, sortable, el);
                 });
 
-            });
+            });*/
 
         </script>
     </head>
@@ -76,7 +76,7 @@
 
             <h1>Nestable</h1>
 
-            <div class="PARENT" uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150">
+            <div class="PARENT" uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150; nestable-container-class: group">
                 <div class="uk-margin">
                     <div class="uk-card uk-card-default uk-card-body uk-card-small">
                         <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
@@ -91,7 +91,7 @@
                     <div class="uk-card uk-card-default uk-card-body uk-card-small">
                         <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 3
                     </div>
-                    <div uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150">
+                    <div class="group" uk-sortable="handle: .uk-sortable-handle; nestable: true; animation: 150; nestable-container-class: group">
                         <div class="uk-margin">
                             <div class="uk-card uk-card-default uk-card-body uk-card-small">
                                 <span class="uk-sortable-handle uk-margin-small-right" uk-icon="icon: table"></span> Item 1
